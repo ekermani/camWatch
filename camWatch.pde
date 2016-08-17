@@ -2,10 +2,12 @@ import processing.video.*;
 Capture cam;
 
 PImage bars;
-PImage selfie;
 
-int cam_height ;
-int cam_width;
+int index=0;
+
+PImage[] pictures = new PImage[index];
+
+boolean modeA = true;
 
 void setup() {
   size(500, 600);  
@@ -16,8 +18,6 @@ void setup() {
 
   noStroke();
   background(255);
-  
-  selfie = createImage(cam_width, cam_height, 
 }
 
 void draw() {
@@ -27,17 +27,27 @@ void draw() {
     translate(width/2, height/2);
     imageMode(CENTER);
     image(cam, 0, 0); //load cam at 0,0
-    //image(selfie, );
     popMatrix();
   }
   imageMode(CORNER);
   image(bars, 0, 0);
+  
+  
+  
 }
-/*do I need a frameCount value*/
-
 
 void mousePressed() {
-  saveFrame("images/##.png");
+  saveFrame("data/"+index+".png");
+  index++;
+} 
+
+void keyPressed(){
+  if(key==' '){
+    modeA = !modeA; //space bar toggles between modes
+    image(cam,0,0);
+    println(modeA);
+  } else {image(pictures[index],0,0);
+  }
 }
-//PImage = new 
-//load saved image
+
+//inside image clock if statement, condition...
