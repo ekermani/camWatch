@@ -14,8 +14,8 @@ int counter = 0;
 int clockStart;
 
 void setup() {
-  clockStart = millis();
-  font = loadFont("OCRAStd-48.vlw");
+  //clockStart = millis();
+  font = loadFont("PingFangHK-Ultralight-48.vlw"); 
 
   size(500, 600);  
   cam = new Capture(this, 640, 600);  //CHECK THE SIZE
@@ -28,7 +28,7 @@ void setup() {
 }
 
 void draw() {
-  s2 = second(); 
+  //s2 = second(); 
   if (cam.available()) {
     cam.read();
   }
@@ -50,24 +50,24 @@ void draw() {
     int day = day();
     int mon = month();
    
-     if (frameCount % 4== 0) {
-      r+=1 ;
-    } 
-    img = loadImage("0.png"); 
-    tint(0, 0, 0, r);
-    image(img, 0, 0, width, height); 
+   //  if (frameCount % 4== 0) {
+   //   r+=1 ;
+   // } 
+   // img = loadImage("0.png"); 
+   // tint(0, 0, 0, r);
+   // image(img, 0, 0, width, height); 
    
     //println(r); 
     //if((s2-s1)>  ){  //currentTime > previousTime
     //  r++; 
     //}
-  noTint();
+    noTint();
     noStroke();
     fill(255);
-    textSize(60);
-    text((mon + ":" + day  + ":" + hour + ":" + min),250,50);
+    textFont(font);
+    textSize(50);
+    text((mon + ":" + day  + ":" + hour + ":" + min + ":" + sec),185,72);
   }
-
  
 }
 
